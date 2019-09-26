@@ -2,7 +2,7 @@ const icon = {
   rel: "icon",
   type: "image/png",
   href:
-    "https://d335luupugsy2.cloudfront.net/cms/files/76250/1568047427/$gmqolzokan"
+    "https://d335luupugsy2.cloudfront.net/cms/files/76250/1563389608/$k33uw005cmq"
 };
 
 const fontawesome = {
