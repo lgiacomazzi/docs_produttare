@@ -4,7 +4,6 @@ const icon = {
   href:
     "https://d335luupugsy2.cloudfront.net/cms/files/76250/1563389608/$k33uw005cmq"
 };
-
 const fontawesome = {
   rel: "stylesheet",
   href: "https://use.fontawesome.com/releases/v5.7.2/css/all.css",
@@ -12,7 +11,6 @@ const fontawesome = {
     "sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
   crossorigin: "anonymous"
 };
-
 const bootstrap = {
   rel: "stylesheet",
   href:
@@ -27,7 +25,7 @@ const links = [icon, fontawesome, bootstrap];
 const scripts = [];
 
 for (i = 0; i < links.length; i++) {
-  console.log(links[i]);
+  // console.log(links[i]);
   const link = document.createElement("link");
   for (let [key, value] of Object.entries(links[i])) {
     link.setAttribute(key, value);
@@ -36,7 +34,7 @@ for (i = 0; i < links.length; i++) {
 }
 
 for (i = 0; i < scripts.length; i++) {
-  console.log(scripts[i]);
+  // console.log(scripts[i]);
   const script = document.createElement("script");
   for (let [key, value] of Object.entries(scripts[i])) {
     script.setAttribute(key, value);

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <!-- Aqui -->
+
+    <script src="https://lgiacomazzi.github.io/produttare/js_base_produttare.js"></script>
+    <a
+      href="http://eventos.produttare.com.br/fale_com_consultor"
+      id="produttare_raise_hand"
+    >
+      <span class="fa fa-headset fa-lg mr-3"></span
+      ><span>Fale com Consultor</span>
+    </a>
+    <style>
+      #produttare_raise_hand {
+        font-family: "Din Pro";
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.1rem;
+        position: absolute;
+        bottom: 1rem;
+        right: 2rem;
+        transition: 400ms;
+        background-image: linear-gradient(-45deg, #f0353a, #fb9433);
+        padding: 1em;
+        border-radius: 0.2em;
+        /* b  order: 1px solid #cdcdcd; */
+      }
+
+      #produttare_raise_hand:hover {
+        text-decoration: none;
+
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem #f0353a80 !important;
+      }
+
+      @media (max-width: 1000px) {
+        #produttare_raise_hand {
+          width: 100%;
+          bottom: 0rem;
+          right: 0rem;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    </style>
+
+    <!-- Até aqui -->
+  </body>
+</html>
