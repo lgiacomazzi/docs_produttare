@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://lgiacomazzi.github.io/produttare/js_base_produttare.js"></script>
+  </head>
+  <body>
+    <section class="container-fluid pt-4">
+      <h1>Calculadora OEE MVP</h1>
+      <form>
+        <div class="form-group">
+          <label for="segmento">Segmento de Atuação</label>
+          <select class="form-control" id="segmento">
+            <option>Alimentos e Bebidas</option>
+            <option>Autopeças </option>
+            <option>Construção Civil </option>
+            <option>Eletro & Eletrônicos </option>
+            <option>Montadoras </option>
+            <option>Móveis </option>
+            <option>Brinquedos </option>
+            <option>Têxtil e Varejo </option>
+            <option>Automotiva </option>
+            <option>Eletrônicos </option>
+            <option>Semicondutores </option>
+            <option>Plásticos </option>
+            <option>Fundição </option>
+            <option>Aeroespacial & Defesa </option>
+            <option>Metal Mecânico </option>
+            <option>Maquinas e Equipamentos </option>
+            <option>Petroquimico </option>
+            <option>Produtos Médicos </option>
+            <option>Outros (industry average) </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="calendario">Calendário de Produção (Minutos)</label>
+          <input
+            type="calendario"
+            class="form-control"
+            id="calendario"
+            placeholder="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="paradasp">Paradas Programadas(Minutos)</label>
+          <input
+            type="paradasp"
+            class="form-control"
+            id="paradasp"
+            placeholder="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="paradasnp">Paradas Não Programadas(Minutos)</label>
+          <input
+            type="paradasnp"
+            class="form-control"
+            id="paradasnp"
+            placeholder="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tempo">Tempo padrão 1 item(Minutos)</label>
+          <input type="tempo" class="form-control" id="tempo" placeholder="0" />
+        </div>
+        <div class="form-group">
+          <label for="qnt">Produção(Unidades)</label>
+          <input type="qnt" class="form-control" id="qnt" placeholder="0" />
+        </div>
+        <div class="form-group">
+          <label for="refugo">Refugo (Unidades)</label>
+          <input
+            type="refugo"
+            class="form-control"
+            id="refugo"
+            placeholder="0"
+          />
+        </div>
+        <a onclick="calculate()" class="btn btn-primary mb-2 text-white"
+          >Submit</a
+        >
+        <div id="resultados">
+          <p id="segmentoee">OEE Segmento:</p>
+          <p id="roee">OEE:</p>
+          <p id="rdisp">Disponibilidade:</p>
+          <p id="rperf">Performance:</p>
+          <p id="rquali">Qualidade:</p>
+        </div>
+      </form>
+    </section>
+  </body>
+  <script>
+    function calculate() {
+      var segmento = document.getElementById("segmento").value;
+      var calendario = Number(document.getElementById("calendario").value);
+      var paradasp = Number(document.getElementById("paradasp").value);
+      var paradasnp = Number(document.getElementById("paradasnp").value);
+      var tempo = Number(document.getElementById("tempo").value);
+      var qnt = Number(document.getElementById("qnt").value);
+      var refugo = Number(document.getElementById("refugo").value);
+
+      var tav = qnt * tempo;
+      var tdisp = calendario - paradasp;
+
+      var oee = tav / tdisp;
+      var disp = (tdisp - paradasnp) / tdisp;
+      var quali = 1 - refugo / qnt;
+      var perf = oee / (disp * quali);
+      var benchmark = 0;
+
+      if (segmento === "Alimentos e Bebidas") {
+        benchmark = 0.85;
+      } else if (segmento === "Autopeças") {
+        benchmark = 0.85;
+      } else if (segmento === "Construção Civil") {
+        benchmark = 0.76;
+      } else if (segmento === "Eletro & Eletrônicos") {
+        benchmark = 0.9;
+      } else if (segmento === "Montadoras") {
+        benchmark = 0.9;
+      } else if (segmento === "Móveis") {
+        benchmark = 0.76;
+      } else if (segmento === "Brinquedos") {
+        benchmark = 0.85;
+      } else if (segmento === "Têxtil e Varejo") {
+        benchmark = 0.9;
+      } else if (segmento === "Semicondutores") {
+        benchmark = 0.9;
+      } else if (segmento === "Plásticos") {
+        benchmark = 0.9;
+      } else if (segmento === "Fundição") {
+        benchmark = 0.76;
+      } else if (segmento === "Aeroespacial & Defesa") {
+        benchmark = 0.76;
+      } else if (segmento === "Metal Mecânico") {
+        benchmark = 0.85;
+      } else if (segmento === "Maquinas e Equipamentos") {
+        benchmark = 0.85;
+      } else if (segmento === "Petroquimico") {
+        benchmark = 0.95;
+      } else if (segmento === "Produtos Médicos") {
+        benchmark = 0.91;
+      } else if (segmento === "Outros (industry average)") {
+        benchmark = 0.85;
+      }
+
+      document.getElementById("segmentoee").innerHTML =
+        "OEE Segmento: " + benchmark;
+      document.getElementById("roee").innerHTML = "OEE: " + oee * 100 + " %";
+      document.getElementById("rdisp").innerHTML = "u1: " + disp * 100 + " %";
+      document.getElementById("rperf").innerHTML = "u2: " + perf * 100 + " %";
+      document.getElementById("rquali").innerHTML = "u3: " + quali * 100 + " %";
+    }
+  </script>
+</html>
