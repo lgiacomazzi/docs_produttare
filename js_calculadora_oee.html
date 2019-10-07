@@ -6,7 +6,7 @@
     <script src="https://lgiacomazzi.github.io/produttare/js_base_produttare.js"></script>
   </head>
   <body>
-    <section class="container-fluid pt-4">
+    <section class="container pt-4">
       <h1>Calculadora OEE MVP</h1>
       <form>
         <div class="form-group">
@@ -36,7 +36,7 @@
         <div class="form-group">
           <label for="calendario">Calendário de Produção (Minutos)</label>
           <input
-            type="calendario"
+            type="number"
             class="form-control"
             id="calendario"
             placeholder="0"
@@ -44,36 +44,84 @@
         </div>
         <div class="form-group">
           <label for="paradasp">Paradas Programadas(Minutos)</label>
+
           <input
-            type="paradasp"
+            type="number"
             class="form-control"
             id="paradasp"
             placeholder="0"
-          />
+          /><small>
+            Tempo que é dedicado a dedicado a eventos programados tais como:
+            (refeições, manutenções planejadas, reuniões, treinamentos,
+            etc...)</small
+          >
         </div>
         <div class="form-group">
           <label for="paradasnp">Paradas Não Programadas(Minutos)</label>
           <input
-            type="paradasnp"
+            type="number"
             class="form-control"
             id="paradasnp"
             placeholder="0"
-          />
+          /><small>
+            Tempo gasto em eventos não programados tais como: (quebra de
+            máquina, falta de matéria-prima, falta de energia, etc...)</small
+          >
         </div>
         <div class="form-group">
           <label for="tempo">Tempo padrão 1 item(Minutos)</label>
-          <input type="tempo" class="form-control" id="tempo" placeholder="0" />
+          <input
+            type="number"
+            class="form-control"
+            id="tempo"
+            placeholder="0"
+          /><small>
+            É definido pela engenharia de produção como o tempo necessário para
+            que um recurso execute uma operação no processo na fabricação de um
+            produto. )</small
+          >
         </div>
         <div class="form-group">
           <label for="qnt">Produção(Unidades)</label>
-          <input type="qnt" class="form-control" id="qnt" placeholder="0" />
+          <input
+            type="number"
+            class="form-control"
+            id="qnt"
+            placeholder="0"
+          /><small
+            >Refere-se a quantidade de itens que foram fabricados no recurso que
+            esta sendo monitorado, no tempo que está sendo levado em
+            consideração.
+          </small>
         </div>
         <div class="form-group">
           <label for="refugo">Refugo (Unidades)</label>
           <input
-            type="refugo"
+            type="number"
             class="form-control"
             id="refugo"
+            placeholder="0"
+          /><small
+            >Refere-se a quantidade de itens não aprovados que foram fabricados
+            no recurso que esta sendo monitorado.</small
+          >
+        </div>
+        <hr />
+        <div class="form-group">
+          <label for="totalqnt">Itens Produzidos Mensalmente (Unidades)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="totalqnt"
+            placeholder="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="price">Margem de Lucro Médio por Item (R$)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
             placeholder="0"
           />
         </div>
@@ -86,6 +134,7 @@
           <p id="rdisp">Disponibilidade:</p>
           <p id="rperf">Performance:</p>
           <p id="rquali">Qualidade:</p>
+          <p id="rpot">Qualidade:</p>
         </div>
       </form>
     </section>
@@ -99,6 +148,8 @@
       var tempo = Number(document.getElementById("tempo").value);
       var qnt = Number(document.getElementById("qnt").value);
       var refugo = Number(document.getElementById("refugo").value);
+      var totalqnt = Number(document.getElementById("totalqnt").value);
+      var price = Number(document.getElementById("price").value);
 
       var tav = qnt * tempo;
       var tdisp = calendario - paradasp;
@@ -145,12 +196,24 @@
         benchmark = 0.85;
       }
 
+      var pot = 0;
+
+      if (benchmark > oee) {
+        pot = (benchmark - oee) * totalqnt * price;
+      }
+
       document.getElementById("segmentoee").innerHTML =
         "OEE Segmento: " + benchmark;
-      document.getElementById("roee").innerHTML = "OEE: " + oee * 100 + " %";
-      document.getElementById("rdisp").innerHTML = "u1: " + disp * 100 + " %";
-      document.getElementById("rperf").innerHTML = "u2: " + perf * 100 + " %";
-      document.getElementById("rquali").innerHTML = "u3: " + quali * 100 + " %";
+      document.getElementById("roee").innerHTML =
+        "OEE: " + (oee * 100).toFixed(2) + " %";
+      document.getElementById("rdisp").innerHTML =
+        "u1: " + (disp * 100).toFixed(2) + " %";
+      document.getElementById("rperf").innerHTML =
+        "u2: " + (perf * 100).toFixed(2) + " %";
+      document.getElementById("rquali").innerHTML =
+        "u3: " + (quali * 100).toFixed(2) + " %";
+      document.getElementById("rpot").innerHTML =
+        "Potencial: R$" + pot.toFixed(2);
     }
   </script>
 </html>
