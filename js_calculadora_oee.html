@@ -106,6 +106,31 @@
             no recurso que esta sendo monitorado.</small
           >
         </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="Radios"
+            id="gargalo"
+            value="option1"
+            checked
+          />
+          <label class="form-check-label" for="gargalo">
+            Máquina Gargalo
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="Radios"
+            id="ngargalo"
+            value="option2"
+          />
+          <label class="form-check-label" for="ngargalo">
+            Máquina <b>não</b> é gargalo
+          </label>
+        </div>
         <hr />
         <div class="form-group">
           <label for="totalqnt">Itens Produzidos Mensalmente (Unidades)</label>
@@ -125,22 +150,29 @@
             placeholder="0"
           />
         </div>
-        <a onclick="calculate()" class="btn btn-primary mb-2 text-white"
+        <a onclick="calculate()" class="btn btn-primary mb-4 text-white"
           >Submit</a
         >
         <div id="resultados">
-          <p id="segmentoee">OEE Segmento:</p>
+          <h2>Resultados</h2>
+          <hr />
           <p id="roee">OEE:</p>
           <p id="rdisp">Disponibilidade:</p>
           <p id="rperf">Performance:</p>
           <p id="rquali">Qualidade:</p>
-          <p id="rpot">Qualidade:</p>
+          <hr />
+          <p id="segmentoee">OEE Segmento:</p>
+          <p id="roeediff">Gap:</p>
+          <hr />
+          <p id="rpot1">Potencial:</p>
+          <p id="rpot2">Potencial por Ponto Percentual:</p>
         </div>
       </form>
     </section>
   </body>
   <script>
     function calculate() {
+      // Verifica os inputs
       var segmento = document.getElementById("segmento").value;
       var calendario = Number(document.getElementById("calendario").value);
       var paradasp = Number(document.getElementById("paradasp").value);
@@ -150,16 +182,23 @@
       var refugo = Number(document.getElementById("refugo").value);
       var totalqnt = Number(document.getElementById("totalqnt").value);
       var price = Number(document.getElementById("price").value);
+      var gargalo = document.getElementById("gargalo").checked;
 
+      // Calcula variáveis
       var tav = qnt * tempo;
       var tdisp = calendario - paradasp;
 
+      // calcula indicadores
       var oee = tav / tdisp;
+      if (gargalo) {
+        oee = tav / calendario;
+      }
       var disp = (tdisp - paradasnp) / tdisp;
       var quali = 1 - refugo / qnt;
       var perf = oee / (disp * quali);
       var benchmark = 0;
 
+      // Verifica o segmento
       if (segmento === "Alimentos e Bebidas") {
         benchmark = 0.85;
       } else if (segmento === "Autopeças") {
@@ -196,24 +235,43 @@
         benchmark = 0.85;
       }
 
-      var pot = 0;
+      var tempoAgregacao = 0;
+      var tempoCalendario = 0;
+      var tempoAgregacaoBenchmark = 0;
+      var tempoCalendarioBenchmark = 0;
+      var potencialCrescimento = 0;
+      var potencialProducao = 0;
+      var potencialGanho = 0;
+      var ganhoPercentual = 0;
 
+      // Se oee > benchmark seguir
       if (benchmark > oee) {
-        pot = (benchmark - oee) * totalqnt * price;
+        tempoAgregacao = totalqnt * tempo;
+        tempoCalendario = tempoAgregacao / oee;
+        tempoAgregacaoBenchmark = benchmark * tempoCalendario;
+        tempoCalendarioBenchmark = tempoAgregacaoBenchmark / tempo;
+        potencialCrescimento = benchmark - oee;
+        potencialProducao = tempoAgregacaoBenchmark - tempoAgregacao;
+        potencialGanho = potencialProducao * price;
+        ganhoPercentual = potencialGanho / (100 * potencialCrescimento);
       }
 
       document.getElementById("segmentoee").innerHTML =
         "OEE Segmento: " + benchmark;
       document.getElementById("roee").innerHTML =
         "OEE: " + (oee * 100).toFixed(2) + " %";
+      document.getElementById("roeediff").innerHTML =
+        "Gap: " + (potencialCrescimento * 100).toFixed(2) + " %";
       document.getElementById("rdisp").innerHTML =
-        "u1: " + (disp * 100).toFixed(2) + " %";
+        "Disponibilidade: " + (disp * 100).toFixed(2) + " %";
       document.getElementById("rperf").innerHTML =
-        "u2: " + (perf * 100).toFixed(2) + " %";
+        "Performance: " + (perf * 100).toFixed(2) + " %";
       document.getElementById("rquali").innerHTML =
-        "u3: " + (quali * 100).toFixed(2) + " %";
-      document.getElementById("rpot").innerHTML =
-        "Potencial: R$" + pot.toFixed(2);
+        "Qualidade: " + (quali * 100).toFixed(2) + " %";
+      document.getElementById("rpot1").innerHTML =
+        "Potencial: R$" + potencialGanho.toFixed(2);
+      document.getElementById("rpot2").innerHTML =
+        "Potencial: R$" + ganhoPercentual.toFixed(2);
     }
   </script>
 </html>
