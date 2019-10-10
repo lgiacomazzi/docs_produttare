@@ -1,15 +1,15 @@
 const css = {
   rel: "stylesheet",
-  href: "http://lgiacomazzi.github.com/produttare/popup/popup.css"
+  href: "https://lgiacomazzi.github.com/produttare/popup/popup.css"
 };
 
 const div = {
   id: "produttare_raise_hand",
-  href: "http://eventos.produttare.com.br/fale_com_consultor"
+  href: "https://eventos.produttare.com.br/fale_com_consultor"
 };
 
 const objeto =
-  "<span class=`fa fa-headset fa-lg mr-3a></span><span>Fale com Consultor</span>";
+  "<span class='fa fa-headset fa-lg mr-3a'></span><span>Fale com Consultor</span>";
 
 var head = document.getElementsByTagName("head")[0];
 var body = document.getElementsByTagName("body")[0];
