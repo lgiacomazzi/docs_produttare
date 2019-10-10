@@ -7,6 +7,9 @@
   background-image: linear-gradient(-45deg, #f0353a, #fb9433);
   padding: 1em;
   border-radius: 0.2em;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
   /* b  order: 1px solid #cdcdcd; */
 }
 
