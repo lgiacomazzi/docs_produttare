@@ -12,6 +12,8 @@ const objeto =
   "<span class=`fa fa-headset fa-lg mr-3a></span><span>Fale com Consultor</span>";
 
 var head = document.getElementsByTagName("head")[0];
+var body = document.getElementsByTagName("body")[0];
+
 const link = document.createElement("link");
 for (let [key, value] of Object.entries(css)) {
   link.setAttribute(key, value);
