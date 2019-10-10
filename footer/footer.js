@@ -1,6 +1,6 @@
 const css = {
   rel: "stylesheet",
-  href: "./footer/footer.css"
+  href: "https://lgiacomazzi.github.io/produttare/footer/footer.css"
 };
 
 const div = {
