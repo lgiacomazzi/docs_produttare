@@ -1,6 +1,6 @@
 const css = {
   rel: "stylesheet",
-  href: "https://lgiacomazzi.github.com/produttare/popup/popup.css"
+  href: "https://lgiacomazzi.github.io/produttare/popup/popup.css"
 };
 
 const div = {
