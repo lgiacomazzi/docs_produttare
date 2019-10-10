@@ -9,7 +9,7 @@ const div = {
 };
 
 const objeto =
-  "<span class='fa fa-headset fa-lg mr-3a'></span><span>Fale com Consultor</span>";
+  "<span class='fa fa-headset fa-lg mr-3'></span><span>Fale com Consultor</span>";
 
 var head = document.getElementsByTagName("head")[0];
 var body = document.getElementsByTagName("body")[0];
@@ -20,7 +20,7 @@ for (let [key, value] of Object.entries(css)) {
 }
 head.appendChild(link);
 
-const popup = document.createElement("div");
+const popup = document.createElement("a");
 for (let [key, value] of Object.entries(div)) {
   popup.setAttribute(key, value);
 }
