@@ -1,26 +1,26 @@
-const css_popup = {
+var css_popup = {
   rel: "stylesheet",
   href: "https://lgiacomazzi.github.io/produttare/popup/popup.css"
 };
 
-const body_popup = {
+var body_popup = {
   id: "produttare_raise_hand",
   href: "https://eventos.produttare.com.br/fale_com_consultor"
 };
 
-const objeto_popup =
+var objeto =
   "<span class='fa fa-headset fa-lg mr-3'></span><span>Fale com Consultor</span>";
 
 var head = document.getElementsByTagName("head")[0];
 var body = document.getElementsByTagName("body")[0];
 
-const link = document.createElement("link");
+var link = document.createElement("link");
 for (let [key, value] of Object.entries(css_popup)) {
   link.setAttribute(key, value);
 }
 head.appendChild(link);
 
-const popup = document.createElement("a");
+var popup = document.createElement("a");
 for (let [key, value] of Object.entries(body_popup)) {
   popup.setAttribute(key, value);
 }
