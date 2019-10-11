@@ -3,7 +3,7 @@ const css_popup = {
   href: "https://lgiacomazzi.github.io/produttare/popup/popup.css"
 };
 
-const div = {
+const body_popup = {
   id: "produttare_raise_hand",
   href: "https://eventos.produttare.com.br/fale_com_consultor"
 };
@@ -21,7 +21,7 @@ for (let [key, value] of Object.entries(css_popup)) {
 head.appendChild(link);
 
 const popup = document.createElement("a");
-for (let [key, value] of Object.entries(div)) {
+for (let [key, value] of Object.entries(body_popup)) {
   popup.setAttribute(key, value);
 }
 popup.innerHTML = objeto;

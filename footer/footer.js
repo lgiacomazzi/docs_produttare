@@ -3,7 +3,7 @@ const css_footer = {
   href: "https://lgiacomazzi.github.io/produttare/footer/footer.css"
 };
 
-const div = {
+const body_footer = {
   id: "footer"
 };
 
@@ -20,7 +20,7 @@ for (let [key, value] of Object.entries(css_footer)) {
 head.appendChild(link);
 
 const footer = document.createElement("footer");
-for (let [key, value] of Object.entries(div)) {
+for (let [key, value] of Object.entries(body_footer)) {
   footer.setAttribute(key, value);
 }
 footer.innerHTML = objeto;
