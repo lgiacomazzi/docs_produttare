@@ -1,4 +1,4 @@
-const css = {
+const css_footer = {
   rel: "stylesheet",
   href: "https://lgiacomazzi.github.io/produttare/footer/footer.css"
 };
@@ -14,7 +14,7 @@ var head = document.getElementsByTagName("head")[0];
 var body = document.getElementsByTagName("body")[0];
 
 const link = document.createElement("link");
-for (let [key, value] of Object.entries(css)) {
+for (let [key, value] of Object.entries(css_footer)) {
   link.setAttribute(key, value);
 }
 head.appendChild(link);
