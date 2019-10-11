@@ -8,7 +8,7 @@ const body_popup = {
   href: "https://eventos.produttare.com.br/fale_com_consultor"
 };
 
-const objeto =
+const objeto_popup =
   "<span class='fa fa-headset fa-lg mr-3'></span><span>Fale com Consultor</span>";
 
 var head = document.getElementsByTagName("head")[0];
