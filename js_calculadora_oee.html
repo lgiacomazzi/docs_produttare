@@ -143,7 +143,7 @@
               ><h3>Paradas Não Programadas</h3>
               <p>
                 Minutos gastos em eventos não programados tais como: quebra de
-                máquina, falta de matéria-prima, falta de energia, etc...
+                máquina, falta de matéria-prima, falta de energia...
               </p></label
             >
 
@@ -210,7 +210,10 @@
           <hr />
           <div class="form-group py-lg-5 py-3">
             <label for="totalqnt"><h3>Itens Produzidos Mensalmente</h3></label>
-
+            <p>
+              Informe o quantidade total de produção (peças boas), no recurso
+              crítico (gargalo), que esta sendo simulado.
+            </p>
             <input
               type="number"
               class="form-control form-control-lg"
@@ -220,7 +223,14 @@
           </div>
           <hr />
           <div class="form-group py-lg-5 py-3">
-            <label for="price"><h3>Margem de Lucro Médio por Item</h3></label>
+            <label for="price"
+              ><h3>Margem de Lucro Médio por Item</h3>
+              <p>
+                Tendo como base a quantidade informada de produção mensal,
+                informe o valor médio de lucro dos itens que são produzidos no
+                recurso que está sendo simulado.
+              </p>
+            </label>
 
             <input
               type="number"
@@ -273,10 +283,33 @@
           </div>
           <div class="col  col-lg-6 col-12">
             <h3>OEE Médio <span id="segmentoee"></span></h3>
-            <p>(De acordo com o banco de dados da <b>eFact</b>)</p>
+            <p>
+              De acordo com o banco de dados da
+              <a href="https://eventos.produttare.com.br/efact">eFact</a> e
+              publicações relevantes sobre tema, apresentamos o OEE padrão para
+              o setor onde sua empresa esta inserida.
+            </p>
             <h4>Potencial de Melhoria: <span id="roeediff"></span></h4>
-            <h4>Aumento de Faturamento: <span id="rpot1"></span></h4>
+            <p>
+              Tendo como base o OEE padrão do setor em que a empresa está
+              inserida e o OEE desta simulação, apresentamos o potencial de
+              melhoria do OEE que a empresa pode ter caso atinja o padrão do
+              setor.
+            </p>
+            <h4>Aumento de Lucro: <span id="rpot1"></span></h4>
+            <p>
+              Refere-se ao lucro que a empresa terá caso consiga atingir o OEE
+              padrão do setor que está inserido e que o recurso simulado é um
+              recurso crítico (gargalo), e o valor apresentado tem como base as
+              variáveis de entrada desta simulação (Produção e Margem de
+              Contribuição).
+            </p>
             <h4>Potencial por Ponto Percentual: <span id="rpot2"></span></h4>
+            <p>
+              Refere-se ao valor do aumento de lucro para cada ponto percentual
+              de aumento do OEE no recurso simulado, desde que o recurso seja
+              crítico (gargalo).
+            </p>
           </div>
         </div>
         <a onclick="recalculate()" class="btn btn-light btn-lg"
@@ -286,8 +319,8 @@
     </section>
     <section class="py-lg-5 py-4">
       <div class="container py-lg-5 py-4 text-white">
-        <div id="talk" class="row rounded px-lg-5 pt-lg-5 pt-2">
-          <div class="col col-md col-12">
+        <div id="talk" class="row rounded px-lg-5 pt-lg-5 py-4">
+          <div class="col col-md col-12 text-center text-lg-left">
             <h3>
               Quer controlar o OEE da sua empresa, identificar as perdas e ter
               dados confiáveis e em tempo real para a tomada de decisão ?
@@ -297,12 +330,12 @@
               empresa em sua mão.
             </p>
             <a
-              href="http://www.efact.com.br/produtos.php?s=eFact-GPT"
-              class="my-lg-5 my-2 btn btn-light btn-lg"
-              >Mais Informações ➞</a
+              href="http://eventos.produttare.com.br/efact"
+              class="my-lg-5 my-4 btn btn-light btn-lg"
+              >Solução eFact ➞</a
             >
           </div>
-          <div class="col col-md col-12 text-right">
+          <div class="col col-md col-12 text-center text-lg-right">
             <img
               width="260"
               src="https://d335luupugsy2.cloudfront.net/cms/files/76250/1570563258/$8p3tmiate74"
@@ -311,133 +344,6 @@
         </div>
       </div>
     </section>
-    <div id="footer-light">
-      <footer class="container py-5">
-        <div class="row">
-          <div class="col-12 col-md text-center">
-            <img
-              src="https://d335luupugsy2.cloudfront.net/cms/files/76250/1565785874/$qcg6ww5tsvj"
-              width="200"
-              class="mb-5"
-            />
-          </div>
-          <div class="col-12 col-md text-center text-lg-left mb-4">
-            <h5 class="text-dark">Sobre nós</h5>
-            <ul class="list-unstyled text-small">
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/institucional.php"
-                  >A empresa</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/equipe.php"
-                  >Equipe</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/parceiros.php"
-                  >Parceiros</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/clientes.php"
-                  >Clientes</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/resultados.php"
-                  >Resultados</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-12 col-md text-center text-lg-left mb-4">
-            <h5 class="text-dark">Soluções</h5>
-            <ul class="list-unstyled text-small">
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/solucoes.php?s=Consultoria"
-                  >Consultorias</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/solucoes.php?s=Capacitacao"
-                  >Capacitações</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/solucoes.php?s=Kaizen"
-                  >Kaizens</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/solucoes.php?s=Gerenciamento-Modular"
-                  >Gerenciamento Modular</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/solucoes.php?s=Softwares"
-                  >Produttare Software</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.produttare.com.br/solucoes.php?s=Produttare-Internacional"
-                  >Produttare Internacional</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-12 col-md text-center text-lg-left mb-4">
-            <h5 class="text-dark">Contato</h5>
-            <ul class="list-unstyled text-small">
-              <li>
-                <a
-                  class="text-muted"
-                  href="http://www.linkedin.com/company/produttare"
-                  >LinkedIn</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-muted"
-                  href="https://www.facebook.com/Produttare?fref=ts"
-                  >Facebook</a
-                >
-              </li>
-              <li>
-                <a class="text-muted" href="tel:51 3024 5536">51 3024 5536</a>
-              </li>
-              <li>
-                <a class="text-muted" href="mailto:contato@produttare.com.br"
-                  >contato@produttare.com.br</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-    </div>
   </body>
   <script>
     function recalculate() {
@@ -755,6 +661,10 @@
       #main {
         min-height: 20vh;
         background-size: 140%;
+      }
+
+      .rounded {
+        border-radius: 0px !important;
       }
     }
   </style>
